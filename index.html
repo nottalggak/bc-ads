@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f2f4f6">
+<title>베이스캠프 광고 현황</title>
+<meta property="og:title" content="베이스캠프 광고 현황">
+<meta property="og:description" content="광고별로 쓴 돈, 들어온 사람, 신청서 쓰러 간 사람을 실시간으로">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f2f4f6;--card:#fff;--ink:#191f28;--ink2:#4e5968;--sub:#8b95a1;--line:#f2f4f6;--line2:#e5e8eb;
+  --blue:#3182f6;--blue-soft:#e8f3ff;--blue-mid:#90c2ff;--green:#03b26c;--green-soft:#e5f8ee;--red:#f04452;--track:#eef0f3;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#101013;--card:#1c1c20;--ink:#f2f3f5;--ink2:#c3c8cf;--sub:#8b919a;--line:#26262b;--line2:#303036;
+  --blue:#4c94ff;--blue-soft:#17263d;--blue-mid:#2d5a99;--green:#2fca86;--green-soft:#123326;--red:#ff5c69;--track:#2a2a30;
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
+  font-feature-settings:"tnum";letter-spacing:-.01em;-webkit-font-smoothing:antialiased;
+  padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+.wrap{max-width:960px;margin:0 auto;display:grid;gap:12px}
+header{padding:12px 4px 8px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+h1{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--blue);background:var(--blue-soft);padding:6px 10px;border-radius:999px}
+.chip i{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
+.chip.off{color:var(--sub);background:var(--track)}.chip.off i{animation:none}
+@keyframes pulse{50%{opacity:.35}}
+.upd{font-size:13px;color:var(--sub);margin-top:6px}
+.card{background:var(--card);border-radius:22px;padding:22px 20px}
+.card h2{font-size:17px;font-weight:700;margin-bottom:16px;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card h2 small{font-size:13px;font-weight:500;color:var(--sub)}
+.grid2{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+/* 쓴 돈 */
+.spend .lab{font-size:15px;color:var(--ink2);font-weight:500}
+.spend .big{font-size:38px;font-weight:800;letter-spacing:-.04em;margin:4px 0 14px}
+.bar{height:10px;border-radius:99px;background:var(--track);overflow:hidden}
+.bar b{display:block;height:100%;border-radius:99px;background:var(--blue);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.spend .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--sub);margin-top:10px}
+/* 숫자 칸 */
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--card);border-radius:20px;padding:18px 18px 16px}
+.kpi .k{font-size:14px;color:var(--ink2);font-weight:500}
+.kpi .v{font-size:26px;font-weight:750;letter-spacing:-.03em;margin-top:6px}
+.kpi .s{font-size:13px;color:var(--sub);margin-top:4px}
+.kpi.hi .v{color:var(--blue)}
+/* 단계 */
+.step{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.step:first-of-type{border-top:0;padding-top:0}
+.step .n{font-size:15px;font-weight:600}
+.step .c{font-size:15px;font-weight:700;text-align:right}
+.step .r{grid-column:1/-1;display:flex;align-items:center;gap:10px}
+.step .r .bar{flex:1;height:8px}
+.step .r span{font-size:13px;color:var(--sub);min-width:88px;text-align:right}
+.step.dim .n,.step.dim .c{color:var(--sub)}
+/* 광고 목록 */
+.seg{display:inline-flex;background:var(--track);border-radius:12px;padding:3px}
+.seg button{border:0;background:none;font:inherit;font-size:13px;font-weight:600;color:var(--sub);padding:7px 11px;border-radius:9px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.ads{display:grid}
+.ad{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.ad:first-child{border-top:0}
+.ad img{width:46px;height:58px;border-radius:9px;object-fit:cover;background:var(--track)}
+.ad .t{font-size:15px;font-weight:600;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ad .d{font-size:13px;color:var(--sub);margin-top:3px}
+.ad .x{text-align:right}
+.ad .x b{display:block;font-size:15px;font-weight:700}
+.ad .x em{font-style:normal;font-size:13px;color:var(--sub)}
+.ad .x em.good{color:var(--green);font-weight:600}
+.ad .x em.bad{color:var(--red)}
+.ad .sb{grid-column:2/-1;height:4px;border-radius:9px;background:var(--track);overflow:hidden;margin-top:-2px}
+.ad .sb b{display:block;height:100%;background:var(--blue-mid);border-radius:9px}
+.key{font-size:13px;color:var(--ink2);line-height:1.6;background:var(--bg);border-radius:12px;padding:10px 12px;margin:-4px 0 8px}.key b{font-weight:600;color:var(--ink)}.key .g{color:var(--green);font-weight:700}.key .r{color:var(--red);font-weight:700}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:2px}
+.tag.best{background:var(--green-soft);color:var(--green)}
+.tag.wait{background:var(--track);color:var(--sub)}
+.tag.apply{background:var(--blue-soft);color:var(--blue)}
+/* 날짜별 */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font-family:inherit;font-size:11px;fill:var(--sub)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--ink2);margin-top:12px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+/* 나눠 보기 */
+.hb{display:grid;grid-template-columns:76px 1fr 64px;gap:10px;align-items:center;padding:7px 0;font-size:14px}
+.hb .bar{height:8px}.hb span:last-child{text-align:right;color:var(--ink2);font-weight:600}
+/* 실시간 */
+.feed{display:grid}
+.ev{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.ev:first-child{border-top:0}
+.ev i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--line2)}
+.ev.apply i{background:var(--blue)}.ev.read i{background:var(--green)}
+.ev .w{color:var(--sub);margin-left:auto;font-size:13px;white-space:nowrap}
+.ev.apply b{color:var(--blue)}
+.empty{font-size:14px;color:var(--sub);line-height:1.6;padding:6px 0}
+.foot{font-size:12px;color:var(--sub);text-align:center;padding:10px 0 0;line-height:1.7}
+.sk{color:transparent!important;background:var(--track);border-radius:8px;animation:pulse 1.4s infinite}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>베이스캠프 광고 현황</h1>
+      <div class="upd" id="upd">불러오는 중</div>
+    </div>
+    <span class="chip" id="chip"><i></i><span>진행 중</span></span>
+  </header>
+
+  <section class="card spend">
+    <div class="lab">지금까지 쓴 돈</div>
+    <div class="big sk" id="spend">₩0,000</div>
+    <div class="bar"><b id="spendBar" style="width:0"></b></div>
+    <div class="meta"><span id="spendSub">&nbsp;</span><span id="spendEnd">&nbsp;</span></div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <div class="grid2">
+    <section class="card">
+      <h2>광고를 본 사람이 신청서까지 가는 길</h2>
+      <div id="funnel"></div>
+    </section>
+    <section class="card">
+      <h2>날짜별 <small id="chartNote"></small></h2>
+      <svg class="chart" id="chart" viewBox="0 0 420 190" role="img" aria-label="날짜별 방문자와 신청하기 버튼 클릭"></svg>
+      <div class="legend" id="legend"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>광고별
+      <span class="seg" id="seg"><button data-k="spend" class="on">쓴 돈순</button><button data-k="eff">가성비순</button><button data-k="apply">신청서순</button></span>
+    </h2>
+    <div class="key">오른쪽 금액은 <b>광고 보고 들어온 사람 1명을 데려오는 데 든 돈</b>입니다. <span class="g">초록</span>은 평균(<span id="avgCpl">–</span>)보다 싸게, <span class="r">빨강</span>은 비싸게 데려온 광고, 회색은 평균과 비슷하거나 아직 1명뿐이라 판단하기 이른 광고입니다.</div>
+    <div class="ads" id="ads"></div>
+  </section>
+
+  <div class="grid2" id="splits" hidden>
+    <section class="card"><h2>노출 위치별 쓴 돈</h2><div id="place"></div></section>
+    <section class="card"><h2>나이별 들어온 사람</h2><div id="age"></div></section>
+  </div>
+
+  <section class="card">
+    <h2>실시간 <small id="feedNote"></small></h2>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const won = (n) => '₩' + Math.round(n || 0).toLocaleString('ko-KR');
+const fmt = (n) => (n == null ? '–' : Math.round(n).toLocaleString('ko-KR'));
+const pct = (a, b) => (b ? (a / b * 100) : 0);
+const pctS = (a, b) => (b ? (pct(a, b) < 10 ? pct(a, b).toFixed(1) : Math.round(pct(a, b))) + '%' : '–');
+// 예산 계획(하루 예산·예상 총액)은 서버 plan 값에서 받는다(광고관리자 예산을 바꾸면 plan만 다시 넣는다)
+const PLACE = { feed: '피드', instagram_stories: '스토리', instagram_reels: '릴스', instagram_explore: '탐색', instagram_explore_grid_home: '탐색 홈', instagram_profile_feed: '프로필 피드', instagram_search: '검색 결과', ig_search: '검색 결과' };
+let S = null, sortKey = 'spend';
+
+function ago(ts) {
+  const s = Math.max(0, (Date.now() - ts) / 1000);
+  if (s < 60) return '방금';
+  if (s < 3600) return Math.floor(s / 60) + '분 전';
+  if (s < 86400) return Math.floor(s / 3600) + '시간 전';
+  return Math.floor(s / 86400) + '일 전';
+}
+const kst = (ts) => new Date(ts + 9 * 3600e3);
+const hm = (ts) => { const d = kst(ts); return `${d.getUTCMonth() + 1}/${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`; };
+const adNo = (name) => (/광고(\d{2})/.exec(name || '') || [])[1];
+const shortName = (name) => (name || '').replace(/^광고\d{2}\s*·\s*/, '');
+
+function render() {
+  const m = S.meta || { ads: [] }, ads = m.ads || [], site = S.site, T = site.total || {}, A = site.ad || {};
+  const sum = (k) => ads.reduce((s, a) => s + (a[k] || 0), 0);
+  const tt = m.total || {}, spend = tt.spend ?? sum('spend'), imp = tt.impressions ?? sum('impressions'), reach = tt.reach ?? sum('reach'), lpv = sum('lpv'), clicks = ads.some((a) => a.clicks) ? sum('clicks') : null;
+  const applyP = T.a || 0;
+
+  // 상태
+  const days = Math.ceil((Date.parse(S.end + 'T23:59:59+09:00') - Date.now()) / 86400e3);
+  const live = days >= 0 && ads.some((a) => !a.status || a.status === 'ACTIVE');
+  $('chip').className = 'chip' + (live ? '' : ' off');
+  $('chip').lastChild.textContent = live ? (days === 0 ? '진행 중 · 오늘 마감' : `진행 중 · 마감 D-${days}`) : days >= 0 && !ads.some((a) => a.spend) ? `게시 전 · 마감 D-${days}` : '종료';
+  $('upd').textContent = `${ago(S.now)} 갱신`;
+
+  // 쓴 돈
+  $('spend').classList.remove('sk');
+  $('spend').textContent = won(spend);
+  const P = S.plan || {}, EST = P.total || 0;
+  $('spendBar').style.width = EST ? Math.min(100, pct(spend, EST)) + '%' : '0';
+  $('spendSub').textContent = EST ? `예상 총액 약 ${Math.round(EST / 1e4)}만원 중 ${pctS(spend, EST)}` : '예산 정하는 중';
+  $('spendEnd').textContent = P.note || '11/18 종료';
+
+  // 숫자 칸
+  const k = [
+    ['광고가 보인 횟수', fmt(imp), `${fmt(reach)}명이 봄`],
+    ['광고 보고 들어온 사람', fmt(lpv), lpv ? `1명 데려오는 데 ${won(spend / lpv)}` : '메타 집계'],
+    ['모집 페이지 방문자', fmt(T.v || 0), A.v ? `그중 인스타·광고로 ${fmt(A.v)}명` : '광고 외 방문 포함'],
+    ['신청서 쓰러 간 사람', fmt(applyP), applyP ? `1명에 ${won(spend / applyP)} · 방문자의 ${pctS(applyP, T.v)}` : '신청하기 버튼을 누른 사람', true],
+  ];
+  $('kpis').innerHTML = k.map(([a, b, c, hi]) => `<div class="kpi${hi ? ' hi' : ''}"><div class="k">${a}</div><div class="v">${b}</div><div class="s">${c}</div></div>`).join('');
+
+  // 단계
+  const steps = [
+    ['광고가 보임', imp],
+    ['광고를 누름', clicks],
+    ['모집 페이지에 들어옴', lpv],
+    ['페이지 절반까지 읽음', A.h || 0],
+    ['끝까지 읽음', A.e || 0],
+    ['신청서 쓰러 감', A.a || 0],
+  ].filter((s) => s[1] != null);
+  let prev = null;
+  $('funnel').innerHTML = steps.map(([n, v], i) => {
+    const r = prev ? pct(v, prev) : 100, html = `<div class="step${v ? '' : ' dim'}"><div class="n">${n}</div><div class="c">${fmt(v)}</div>
+      <div class="r"><div class="bar"><b style="width:${Math.min(100, r)}%"></b></div><span>${i ? '위 단계 중 ' + pctS(v, prev) : '&nbsp;'}</span></div></div>`;
+    prev = v; return html;
+  }).join('') + (site.since ? '' : '<div class="empty">모집 페이지에 집계 코드가 들어가면 아래 세 줄이 채워집니다.</div>');
+
+  // 광고별
+  const byAd = Object.fromEntries((site.byAd || []).map((x) => [x.ad, x]));
+  const rows = ads.map((a) => ({ ...a, cpl: a.lpv ? a.spend / a.lpv : Infinity, apply: (byAd[a.name] || {}).a || 0 }));
+  const cpls = rows.filter((r) => r.lpv >= 2).map((r) => r.cpl).sort((a, b) => a - b);
+  const avg = lpv ? spend / lpv : 0, goodCut = avg * 0.85, badCut = avg * 1.15;
+  const best = cpls[0];
+  $('avgCpl').textContent = avg ? '1명 ' + won(avg) : '–';
+  const maxSpend = Math.max(1, ...rows.map((r) => r.spend));
+  const hasApply = rows.some((r) => r.apply);
+  rows.sort(sortKey === 'eff' ? (a, b) => a.cpl - b.cpl || b.spend - a.spend : sortKey === 'apply' ? (a, b) => b.apply - a.apply || b.lpv - a.lpv : (a, b) => b.spend - a.spend);
+  $('ads').innerHTML = rows.map((r) => {
+    const no = adNo(r.name), wait = r.status && r.status !== 'ACTIVE';
+    const cls = r.lpv >= 2 && r.cpl <= goodCut ? 'good' : r.lpv >= 2 && r.cpl >= badCut ? 'bad' : '';
+    const tag = wait ? `<span class="tag wait">${/REVIEW|IN_PROCESS/.test(r.status) ? '심사 중' : r.status === 'PAUSED' ? '꺼짐' : '준비 중'}</span>` : r.lpv >= 2 && r.cpl === best ? '<span class="tag best">가장 싸게 데려옴</span>' : '';
+    const sub = `보인 횟수 ${fmt(r.impressions)} · 들어온 사람 ${fmt(r.lpv)}` + (hasApply ? ` · 신청서 ${fmt(r.apply)}` : '');
+    return `<div class="ad"><img src="img/a${no || '01'}.jpg" alt="">
+      <div style="min-width:0"><div class="t">${shortName(r.name)}${tag}</div><div class="d">${sub}</div></div>
+      <div class="x"><b>${won(r.spend)}</b><em class="${cls}">${r.lpv ? '1명 ' + won(r.cpl) : '아직 0명'}</em></div>
+      <div class="sb"><b style="width:${pct(r.spend, maxSpend)}%"></b></div></div>`;
+  }).join('') || '<div class="empty">아직 광고 숫자가 없습니다.</div>';
+
+  // 날짜별 (11/5 ~ 11/18 고정)
+  drawChart(m, site);
+
+  // 노출 위치·나이 (메타 연결 후)
+  const sp = $('splits');
+  if (m.place && m.place.length) {
+    sp.hidden = false;
+    const pl = {}; m.place.forEach((p) => { const n = PLACE[p.pos] || p.pos; pl[n] = (pl[n] || 0) + p.spend; });
+    hbars('place', Object.entries(pl), won);
+    const ag = (m.age || []).map((a) => [a.age + '세', a.lpv]);
+    hbars('age', ag, (v) => fmt(v) + '명');
+  } else sp.hidden = true;
+
+  // 실시간
+  const rec = site.recent || [];
+  $('feed').innerHTML = rec.length ? rec.slice(0, 12).map((e) => {
+    const who = e.ig ? '인스타 앱' : e.fb ? '광고 링크' : e.m ? '휴대폰' : '컴퓨터';
+    const what = e.type === 'apply' ? '<b>신청서 쓰러 감</b>' : e.type === 'scroll90' ? '끝까지 읽음' : '모집 페이지 들어옴';
+    const ad = e.ad ? ` · ${shortName(e.ad)}` : '';
+    return `<div class="ev ${e.type === 'apply' || e.type === 'submit' ? 'apply' : e.type === 'scroll90' ? 'read' : ''}"><i></i><span>${who}${ad} · ${what}</span><span class="w">${ago(e.ts)}</span></div>`;
+  }).join('') : '<div class="empty">누가 모집 페이지에 들어오면 여기에 바로 뜹니다.</div>';
+  $('feedNote').textContent = site.since ? `${hm(site.since)}부터 집계` : '';
+
+  // 출처
+  const ms = m.source === 'api' ? `메타 숫자 ${ago(m.at)} 자동 갱신` : m.at ? `메타 숫자 ${hm(m.at)} 광고관리자 기준` : '';
+  $('foot').innerHTML = [ms, '모집 페이지 숫자는 실시간', S.metaError && m.source === 'api' ? '메타 연결 다시 필요' : ''].filter(Boolean).join(' · ');
+}
+
+function hbars(id, list, f) {
+  const max = Math.max(1, ...list.map((x) => x[1]));
+  $(id).innerHTML = list.sort((a, b) => b[1] - a[1]).map(([n, v]) => `<div class="hb"><span>${n}</span><div class="bar"><b style="width:${pct(v, max)}%"></b></div><span>${f(v)}</span></div>`).join('');
+}
+
+function drawChart(m, site) {
+  const days = []; for (let t = Date.parse(S.start + 'T00:00:00Z'); t <= Date.parse(S.end + 'T00:00:00Z'); t += 86400e3) days.push(new Date(t).toISOString().slice(0, 10));
+  const bd = Object.fromEntries((site.byDay || []).map((d) => [d.d, d]));
+  const md = Object.fromEntries((m.daily || []).map((d) => [d.d, d]));
+  const useMeta = (m.daily || []).length > 0;
+  // 막대: 메타 연결 시 일별 지출, 아니면 모집 페이지 방문자 / 점: 신청하기 버튼 클릭
+  const barV = days.map((d) => useMeta ? (md[d] || {}).spend || 0 : (bd[d] || {}).v || 0);
+  const dotV = days.map((d) => (bd[d] || {}).a || 0);
+  const W = 420, H = 190, L = 4, R = 4, T = 22, B = 26, cw = (W - L - R) / days.length, bw = Math.min(16, cw * .56);
+  const DAYB = (S.plan || {}).day || 0, maxB = Math.max(useMeta ? DAYB || 1 : 5, ...barV), maxD = Math.max(1, ...dotV);
+  const y = (v, mx) => T + (H - T - B) * (1 - v / mx);
+  let s = `<line x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}" stroke="var(--line2)"/>`;
+  if (useMeta && DAYB) s += `<line x1="${L}" x2="${W - R}" y1="${y(DAYB, maxB)}" y2="${y(DAYB, maxB)}" stroke="var(--line2)" stroke-dasharray="3 4"/><text x="${W - R}" y="${y(DAYB, maxB) + 13}" text-anchor="end">일예산 ${Math.round(DAYB / 1e4)}만원</text>`;
+  const pts = [];
+  days.forEach((d, i) => {
+    const cx = L + cw * i + cw / 2, isToday = d === S.today, future = d > S.today;
+    const bh = (H - T - B) * barV[i] / maxB;
+    s += `<rect x="${cx - bw / 2}" y="${H - B - Math.max(bh, future ? 0 : 2)}" width="${bw}" height="${Math.max(bh, future ? 0 : 2)}" rx="4" fill="${isToday ? 'var(--blue)' : 'var(--blue-mid)'}" opacity="${future ? .3 : 1}"><title>${d.slice(5).replace('-', '/')} ${useMeta ? won(barV[i]) : barV[i] + '명 방문'} · 신청 ${dotV[i]}</title></rect>`;
+    const ti = days.indexOf(S.today);
+    if (isToday || (i % 2 === 0 && Math.abs(i - ti) > 1)) s += `<text x="${cx}" y="${H - 8}" text-anchor="middle" ${isToday ? 'style="fill:var(--ink);font-weight:700"' : ''}>${+d.slice(5, 7)}/${+d.slice(8)}</text>`;
+    if (!future && dotV[i]) pts.push([cx, y(dotV[i], maxD * 1.15), dotV[i]]);
+  });
+  if (pts.length > 1) s += `<polyline points="${pts.map((p) => p[0] + ',' + p[1]).join(' ')}" fill="none" stroke="var(--green)" stroke-width="2" stroke-linejoin="round"/>`;
+  pts.forEach((p) => { s += `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--card)" stroke="var(--green)" stroke-width="2"/><text x="${p[0]}" y="${p[1] - 9}" text-anchor="middle" style="fill:var(--green);font-weight:700">${p[2]}</text>`; });
+  $('chart').innerHTML = s;
+  $('legend').innerHTML = `<span><i style="background:var(--blue-mid)"></i>${useMeta ? '하루 쓴 돈' : '하루 모집 페이지 방문자'}</span><span><i style="background:var(--green);border-radius:50%"></i>신청서 쓰러 간 사람</span>`;
+  $('chartNote').textContent = '';
+}
+
+document.getElementById('seg').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  sortKey = b.dataset.k; [...b.parentNode.children].forEach((x) => x.classList.toggle('on', x === b)); render();
+});
+
+// 서버는 구글 Apps Script. 열쇠는 주소 # 뒤에 붙어 오고(깃허브에는 올라가지 않음), 한 번 연 브라우저는 기억해 둔다
+const EXEC = 'https://script.google.com/macros/s/AKfycbxNUboxe5lyMrfowx3sSbUOy7lDbjDE4zSueeX8JMSBRVJ5G-XUwAXcGW1OliJG6qfQ/exec';
+const KEY = (() => { let k = location.hash.slice(1); try { if (k) localStorage.setItem('bc_k', k); else k = localStorage.getItem('bc_k') || ''; } catch (e) {} return k; })();
+async function load() {
+  try { const r = await fetch(`${EXEC}?api=stats&k=${encodeURIComponent(KEY)}`, { cache: 'no-store' }); if (r.ok) { S = await r.json(); render(); } } catch (e) {}
+}
+load();
+setInterval(load, 30000);
+setInterval(() => S && ($('upd').textContent = `${ago(S.now)} 갱신`), 10000);
+document.addEventListener('visibilitychange', () => document.visibilityState === 'visible' && load());
+</script>
+</body>
+</html>
